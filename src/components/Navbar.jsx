@@ -1,13 +1,44 @@
 import { useState } from 'react'
 
+function ELXLogo() {
+  return (
+    <div className="relative flex items-center">
+      <svg width="40" height="40" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <defs>
+          <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#fef3c7"/>
+            <stop offset="40%" stopColor="#f59e0b"/>
+            <stop offset="100%" stopColor="#d97706"/>
+          </linearGradient>
+          <filter id="bevel" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="1" result="blur"/>
+            <feOffset in="blur" dx="0" dy="1" result="offset"/>
+            <feSpecularLighting in="blur" surfaceScale="3" specularConstant="0.65" specularExponent="20" lightingColor="#ffffff" result="spec">
+              <fePointLight x="-20" y="-10" z="40"/>
+            </feSpecularLighting>
+            <feComposite in="spec" in2="SourceAlpha" operator="in" result="specOut"/>
+            <feComposite in="SourceGraphic" in2="specOut" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"/>
+          </filter>
+        </defs>
+        <rect x="2" y="2" width="60" height="60" rx="14" fill="#0a0a0a" stroke="url(#goldGrad)" strokeWidth="1.5"/>
+        <g filter="url(#bevel)">
+          <path d="M16 44 V20 H36" fill="none" stroke="url(#goldGrad)" strokeWidth="3.5" strokeLinecap="round"/>
+          <path d="M36 20 V44 H16" fill="none" stroke="url(#goldGrad)" strokeWidth="3.5" strokeLinecap="round" opacity="0.85"/>
+          <path d="M44 20 L52 28 M52 20 L44 28" stroke="url(#goldGrad)" strokeWidth="3.5" strokeLinecap="round"/>
+        </g>
+      </svg>
+      <span className="ml-3 text-xl tracking-[0.35em] font-semibold bg-clip-text text-transparent bg-gradient-to-r from-yellow-200 via-yellow-400 to-amber-500">ELX</span>
+    </div>
+  )
+}
+
 function Navbar() {
   const [open, setOpen] = useState(false)
   return (
     <header className="fixed top-0 inset-x-0 z-40 backdrop-blur-md bg-black/50 border-b border-yellow-500/10">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-full bg-gradient-to-br from-yellow-400 via-amber-400 to-yellow-600 ring-2 ring-yellow-500/30 shadow-[0_0_35px_rgba(234,179,8,0.4)]"></div>
-          <span className="text-xl tracking-[0.35em] font-semibold text-yellow-300">ELX</span>
+          <ELXLogo />
         </div>
         <nav className="hidden md:flex items-center gap-8 text-sm">
           <a href="#tiers" className="text-neutral-300 hover:text-yellow-300 transition-colors">Membership</a>

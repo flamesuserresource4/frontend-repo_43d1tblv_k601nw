@@ -19,6 +19,7 @@ function Showcase() {
 
   return (
     <section id="showcase" className="relative bg-neutral-950 py-24">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(250,204,21,0.06),transparent_60%)]" />
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl text-white font-light">Signature Collection</h2>
@@ -27,6 +28,8 @@ function Showcase() {
         <div className="grid md:grid-cols-3 gap-6">
           {items.map((it) => (
             <div key={it.name} className="group relative overflow-hidden rounded-2xl border border-yellow-500/10 bg-gradient-to-b from-neutral-900 to-neutral-950">
+              {/* Faux 3D pedestal */}
+              <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 h-40 w-[120%] bg-[radial-gradient(ellipse_at_center,rgba(250,204,21,0.18),transparent_60%)] blur-2xl"/>
               <div className="aspect-[4/5] overflow-hidden">
                 <img src={it.img} alt={it.name} className="h-full w-full object-cover opacity-80 group-hover:opacity-100 transition duration-500" />
               </div>
